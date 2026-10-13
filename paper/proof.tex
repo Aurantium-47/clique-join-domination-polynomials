@@ -1,0 +1,298 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,microtype}
+\usepackage[margin=25mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newcommand{\sqcupdot}{\bigsqcup}
+\title{Domination polynomials of clique joins:\protect\\two-blade ultra-log-concavity and three-blade counterexamples}
+\author{Aurantium}
+\date{14 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For all positive integers $r,a,b$, the domination polynomial of
+$K_r\vee(K_a\sqcup K_b)$ is ultra-log-concave of order $N=r+a+b$,
+and hence log-concave and unimodal. The proof uses an exact second
+difference for normalized binomial coefficients, with the zero
+constant coefficient and all truncation endpoints treated explicitly.
+For three blades, ordinary log-concavity can fail:
+$K_1\vee(K_4\sqcup K_5\sqcup K_7)$ has first coefficients
+$(d_1,d_2,d_3)=(1,16,260)$. When equal blade sizes are allowed,
+$K_1\vee(K_q\sqcup K_q\sqcup K_q)$ fails log-concavity for every
+integer $q\ge5$. These results address parts of Rather's question
+following Theorem~2.16; the seventeen-vertex example is itself
+unimodal, so it is not a counterexample to general unimodality.
+\end{abstract}
+
+\section{Graphs, coefficient properties and the source question}
+All graphs are finite, simple and undirected. A set $S$ of vertices
+dominates a graph if every vertex outside $S$ has a neighbor in $S$.
+Write
+\[
+ D_G(x)=\sum_{k=0}^{N}d_kx^k,
+ \qquad d_k=\#\{S\subseteq V(G):|S|=k,\ S\text{ dominates }G\},
+\]
+where $N=|V(G)|$. Every graph considered here is nonempty, so $d_0=0$.
+
+For positive integers $r,t,a_1,\ldots,a_t$, consider
+\begin{equation}\label{eq:graph}
+ G=K_r\vee\left(\sqcupdot_{i=1}^{t}K_{a_i}\right),
+ \qquad M=\sum_{i=1}^{t}a_i,\qquad N=r+M.
+\end{equation}
+The join adds every edge from the central clique $K_r$ to each
+blade; distinct blades have no edges between them. Blade orders may
+coincide in this definition. The explicit counterexample below has
+distinct blade orders $4,5,7$.
+
+A nonnegative sequence $(d_k)_{k=0}^{N}$ is log-concave if
+$d_k^2\ge d_{k-1}d_{k+1}$ for $1\le k\le N-1$. It is
+\emph{ultra-log-concave of order $N$} if
+\[
+ u_k=\frac{d_k}{\binom Nk},\qquad 0\le k\le N,
+\]
+is log-concave and has no internal zeros. A sequence is unimodal if
+it is nondecreasing up to some index and nonincreasing thereafter;
+equal adjacent entries are allowed.
+
+Rather asks about domination zeros and their limits, log-concavity
+and unimodality for this clique-join family immediately after
+Theorem~2.16 in \cite[p.~286]{R}. This is an open question in the
+source, not an affirmative conjecture that all these properties
+hold. We prove the full positive two-blade statement and give
+three-blade failures of log-concavity. We do not resolve all parts
+of that question.
+
+\section{Direct counting and the polynomial formula}
+\begin{lemma}\label{lem:count}
+For the graph in \eqref{eq:graph},
+\begin{equation}\label{eq:general}
+ D_G(x)=\bigl((1+x)^r-1\bigr)(1+x)^M
+              +\prod_{i=1}^{t}\bigl((1+x)^{a_i}-1\bigr).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Partition dominating sets by whether they meet the central clique.
+If they do, any nonempty subset of the central clique and any subset
+of the other $M$ vertices dominate the whole graph: a selected central
+vertex is adjacent to every other vertex. These sets contribute
+$((1+x)^r-1)(1+x)^M$.
+
+If no central vertex is selected, every blade must contribute a
+nonempty subset, because vertices in a blade have no neighbors in
+any other blade. Conversely, nonempty selections from every blade
+dominate their own cliques and all central vertices. Here $t\ge1$,
+so there is a selected neighbor for the central vertices.
+The contribution is the product in \eqref{eq:general}.
+The two classes are disjoint and exhaustive, proving the formula.
+\end{proof}
+
+Formula \eqref{eq:general} agrees with Theorem~2.16 of \cite{R}:
+its first two terms combine as
+\[
+ \bigl((1+x)^r-1\bigr)\bigl((1+x)^M-1\bigr)
+       +\bigl((1+x)^r-1\bigr)
+ =\bigl((1+x)^r-1\bigr)(1+x)^M.
+\]
+The printed display in Corollary~2.17 contains an additional
+$((1+x)^r-1)$ after this combined term, when its central-clique
+parameter is renamed $r$. That display is not used here. All
+counts follow the graph definition and Lemma~\ref{lem:count},
+consistent with Theorem~2.16. This comparison does not assert an
+author-issued correction to the source.
+
+With two blades of orders $a,b$, expanding \eqref{eq:general} gives
+\begin{equation}\label{eq:two}
+ D_G(x)=(1+x)^N-(1+x)^a-(1+x)^b+1,
+ \qquad N=r+a+b.
+\end{equation}
+Thus
+\begin{equation}\label{eq:coeff}
+ d_0=0,\qquad
+ d_k=\binom Nk-\binom ak-\binom bk\quad(1\le k\le N).
+\end{equation}
+We use $\binom ak=0$ for integers $k>a$, and likewise for $b$.
+For each $1\le k\le N$, fixing any one central vertex and choosing
+$k-1$ of the other vertices yields dominating sets, so
+\begin{equation}\label{eq:positive}
+ d_k\ge\binom{N-1}{k-1}>0.
+\end{equation}
+
+\section{Ultra-log-concavity for every two-blade join}
+\begin{theorem}\label{thm:ulc}
+For every triple of positive integers $r,a,b$, the domination
+coefficient sequence of $K_r\vee(K_a\sqcup K_b)$ is ultra-log-concave
+of order $N=r+a+b$. It is therefore log-concave and unimodal.
+\end{theorem}
+\begin{proof}
+Because $r,a,b\ge1$, we have $N\ge3$ and
+$N-a=r+b\ge2$, $N-b=r+a\ge2$. Define, for $0\le k\le N$,
+\[
+ A_k=\frac{\binom ak}{\binom Nk},\qquad
+ B_k=\frac{\binom bk}{\binom Nk}.
+\]
+The denominator is strictly positive throughout this index range.
+By \eqref{eq:coeff}, the normalized coefficients satisfy
+\begin{equation}\label{eq:normalized}
+ u_0=0,\qquad u_k=1-A_k-B_k\quad(1\le k\le N).
+\end{equation}
+In particular, the latter expression is not to be substituted at
+$k=0$, where $1-A_0-B_0=-1$ rather than $u_0$.
+
+We claim that, for every $0\le k\le N-2$,
+\begin{equation}\label{eq:second}
+ A_k-2A_{k+1}+A_{k+2}
+ =A_k\frac{(N-a)(N-a-1)}{(N-k)(N-k-1)}\ge0.
+\end{equation}
+For $k\le a$, the two needed ratios are
+\[
+ A_{k+1}=A_k\frac{a-k}{N-k},\qquad
+ A_{k+2}=A_k\frac{(a-k)(a-k-1)}{(N-k)(N-k-1)}.
+\]
+These equalities include the zero-factor cases $k=a-1$ and $k=a$;
+they do not divide by a vanishing numerator or by $A_{k+1}$.
+All denominators are positive because $k\le N-2$.
+Writing $s=N-k$ and $d=N-a$, their common numerator simplifies by
+\[
+ s(s-1)-2(s-d)(s-1)+(s-d)(s-d-1)=d(d-1),
+\]
+which proves \eqref{eq:second} in this range. For $k>a$, all three
+terms $A_k,A_{k+1},A_{k+2}$ are zero by the binomial convention,
+and the same identity holds. This covers every boundary case.
+Replacing $a$ by $b$ proves the identical statement for $B$.
+
+For $2\le k\le N-1$, all three indices $k-1,k,k+1$ are positive,
+so \eqref{eq:normalized} and the second-difference identities at
+index $k-1$ give
+\[
+ u_{k-1}-2u_k+u_{k+1}\le0.
+\]
+The entries $u_1,\ldots,u_N$ are positive by \eqref{eq:positive}.
+The arithmetic-geometric mean inequality therefore gives
+\begin{equation}\label{eq:AGM}
+ u_k\ge\frac{u_{k-1}+u_{k+1}}2
+       \ge\sqrt{u_{k-1}u_{k+1}}
+ \qquad(2\le k\le N-1).
+\end{equation}
+For the remaining index $k=1$, the required log-concavity inequality
+is automatic because $u_0=0$:
+$u_1^2\ge0=u_0u_2$. Thus $(u_k)_{k=0}^{N}$ satisfies every required
+log-concavity inequality, and its positive support is $1,\ldots,N$.
+This proves ultra-log-concavity of order $N$.
+
+Finally the binomial row is positive and log-concave, since
+\[
+ \frac{\binom Nk^2}{\binom N{k-1}\binom N{k+1}}
+ =\frac{(k+1)(N-k+1)}{k(N-k)}\ge1\qquad(1\le k\le N-1).
+\]
+Multiplying
+its log-concavity inequality by that of $u$ proves
+$d_k^2\ge d_{k-1}d_{k+1}$ for $1\le k\le N-1$.
+Since $d_1,\ldots,d_N>0$, their successive ratios are nonincreasing
+and can pass from at least one to at most one only once. Hence
+the sequence is unimodal, with any equality plateau allowed;
+the leading $d_0=0$ does not change that conclusion.
+\end{proof}
+
+At the smallest parameters $r=a=b=1$, formula \eqref{eq:two} gives
+$(d_0,d_1,d_2,d_3)=(0,1,3,1)$ and
+$(u_0,u_1,u_2,u_3)=(0,1/3,1,1)$. This illustrates the need to
+treat $k=1$ through $u_0=0$: the concavity argument concerns only
+$u_1,\ldots,u_N$, not the entire normalized sequence starting at zero.
+
+\section{Three-blade failures of ordinary log-concavity}
+\begin{proposition}\label{prop:17}
+The graph $G=K_1\vee(K_4\sqcup K_5\sqcup K_7)$ has $17$ vertices
+and a domination polynomial that is not log-concave.
+\end{proposition}
+\begin{proof}
+A dominating set of size one or two must contain the central vertex:
+otherwise each of the three blades would need a selected vertex.
+Thus $d_1=1$ and $d_2=16$. A dominating set of size three either
+contains the central vertex and two arbitrary other vertices, or
+contains one vertex from each blade. These disjoint cases give
+\[
+ d_3=\binom{16}{2}+4\cdot5\cdot7=120+140=260.
+\]
+Consequently $d_2^2-d_1d_3=256-260=-4<0$, which violates
+log-concavity at index two.
+\end{proof}
+
+This counterexample has distinct blade orders, so it does not
+depend on an interpretation allowing equal orders in the source's
+wording. It is also \emph{unimodal}. For completeness, its full
+coefficient sequence, equivalently obtained by expanding
+\[
+ x(1+x)^{16}+
+ \bigl((1+x)^4-1\bigr)\bigl((1+x)^5-1\bigr)\bigl((1+x)^7-1\bigr),
+\]
+is
+\begin{align*}
+ (d_0,\ldots,d_{17})={}&(0,1,16,260,1470,4830,10913,18291,23641,\\
+                     &24034,19371,12363,6187,2380,680,136,17,1).
+\end{align*}
+It increases up to $d_9=24034$ and then decreases. These full
+coefficients also occur in the earlier exact graph enumeration;
+the direct three-coefficient proof above does not require that
+enumeration.
+
+\begin{proposition}\label{prop:equal}
+When equal blade orders are allowed, every graph
+$K_1\vee(K_q\sqcup K_q\sqcup K_q)$ with integer $q\ge5$ has a
+domination polynomial that is not log-concave.
+\end{proposition}
+\begin{proof}
+The same partition of sets of sizes one, two and three gives
+\[
+ d_1=1,\qquad d_2=3q,\qquad d_3=\binom{3q}{2}+q^3.
+\]
+Their log-concavity difference is exactly
+\begin{equation}\label{eq:equal-failure}
+ d_2^2-d_1d_3=-\frac q2(2q^2-9q-3).
+\end{equation}
+The factor $2q^2-9q-3$ is $2$ at $q=5$, and its increment when
+$q$ increases to $q+1$ is $4q-7>0$ for $q\ge5$.
+Thus \eqref{eq:equal-failure} is strictly negative for every
+integer $q\ge5$. At $q=5$ the first three coefficients are
+$(1,15,230)$, giving difference $-5$.
+\end{proof}
+
+The equal-blade family is stated for the graph definition
+\eqref{eq:graph}, which explicitly permits repeated orders. Its
+negative conclusion concerns log-concavity; no claim that this
+family fails unimodality is made.
+
+\section{Evidence and limits of the conclusions}
+All parameter-wide results above follow from the written counting
+and algebraic proofs. Earlier exact checks covered all $1728$
+ordered triples $r,a,b\in\{1,\ldots,12\}$, including $63936$
+second-difference equalities and $31968$ ultra-log-concavity
+inequalities. Separate earlier vertex-subset enumeration checked
+four small two-blade graphs and the full coefficient vectors of
+the two displayed three-blade examples. These are historical
+finite checks, not new executions for this note or substitutes
+for the general proof. Their precise execution scope is recorded
+in the accompanying reproducibility note; no program is needed
+for the mathematical argument and no larger suite is bundled.
+
+Theorem~\ref{thm:ulc} covers exactly positive $r,a,b$ and two blades.
+The three-blade counterexamples rule out universal log-concavity,
+but do not resolve unimodality for arbitrary $t\ge3$ or the
+source's general questions about zeros and their limits. No claim
+of smallest counterexample order, first discovery or worldwide
+priority is made. Prepared with AI assistance; no proof-assistant
+certification or independent human peer review is asserted.
+
+\begin{thebibliography}{1}
+\raggedright
+\bibitem{R}
+Bilal Ahmad Rather, \emph{On domination polynomials of some graphs},
+Journal of Combinatorial Mathematics and Combinatorial Computing
+\textbf{126} (2025), 279--289.
+\href{https://doi.org/10.61091/jcmcc126-19}{doi:10.61091/jcmcc126-19}.
+Theorem~2.16, its following open question, and Corollary~2.17,
+printed p.~286.
+\end{thebibliography}
+\end{document}

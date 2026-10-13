@@ -1,0 +1,48 @@
+{
+  "title": "Domination polynomials of clique joins: two-blade ultra-log-concavity and three-blade counterexamples",
+  "version": "0.1.0",
+  "hash_algorithm": "SHA-256",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1920,
+      "sha256": "24424dfb5618c198d2b0a90b6f3403c453e806514ac6b26acfadbda4bad4e5fd"
+    },
+    {
+      "path": "REFERENCES.md",
+      "bytes": 1796,
+      "sha256": "b8db22f91e7d53789b60d766fe31e9c371e56f83ef86a3cd10bd762e578d4299"
+    },
+    {
+      "path": "REPRODUCIBILITY.md",
+      "bytes": 3111,
+      "sha256": "fc9f2bc0da925b12dbbc8df75c1f40088d95e9e88d2ab560977020585381b8a9"
+    },
+    {
+      "path": "RIGHTS.md",
+      "bytes": 725,
+      "sha256": "68544a00550e6cc4be70cd7e3b0185ddebccc32428c44bc98f64402478426b8d"
+    },
+    {
+      "path": "SCOPE.md",
+      "bytes": 1742,
+      "sha256": "502fc1f26c476fea15df08a9e0c9e16f97ba37d98e9c5d13aae7addcf7fbd8ce"
+    },
+    {
+      "path": "WHITELIST.txt",
+      "bytes": 122,
+      "sha256": "5bbc065ff860ca36a5db167143861e8081ee157d1a80e3fb02fb24398f206916"
+    },
+    {
+      "path": "paper/proof.pdf",
+      "bytes": 280049,
+      "sha256": "ebe246fa715434b57f69d85a4e5b7599f749773850f5c646e88ec00e956d4555"
+    },
+    {
+      "path": "paper/proof.tex",
+      "bytes": 12247,
+      "sha256": "7ac426502661c1070dcce736ec8f1987570c8757b7680bf4955e25b74deb731a"
+    }
+  ]
+}
