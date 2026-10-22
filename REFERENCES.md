@@ -9,3 +9,7 @@ Theorem 2.16's first two terms combine to `((1+x)^r-1)(1+x)^M`; its product term
 The paragraph immediately after Theorem 2.16 poses an open question about zeros and their limits, log-concavity and unimodality. It is not an affirmative conjecture of universal log-concavity. The 17-vertex example has distinct blade orders; the equal-order infinite family is separately stated under the note's explicit graph definition.
 
 This preparation used the retained primary source and existing proof review, without a new literature search. No global-priority or firstness certification is claimed. The third-party PDF and page image are not part of the distributed payload.
+
+## All-blade update (22 October 2026)
+
+See [SOURCE_AND_SCOPE.md](all-blades/SOURCE_AND_SCOPE.md) for the original question location and exact publication dates, and for the checked prior results of Burcroff–O’Brien (2021), Zhang (2021), and Omar (2026). These references delimit the whole-family unimodality contribution and prevent recounting already known special cases.

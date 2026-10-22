@@ -1,17 +1,35 @@
 # Domination polynomials of clique joins
 
-Aurantium · v0.1.0 · 14 October 2026
+**Aurantium · Updated 22 October 2026**
 
-For every r,a,b>=1, the domination polynomial of `K_r join (K_a disjoint-union K_b)` is ultra-log-concave of order N=r+a+b, hence log-concave and unimodal. The full proof treats the actual u_0=0 separately, includes all binomial-truncation cases and proves the required normalized inequalities at every index.
+For every positive core order r and every nonempty finite list of positive blade orders a₁,…,aₜ, the domination polynomial of **Kᵣ ∨ (Kₐ₁ ∪ ⋯ ∪ Kₐₜ) is unimodal**.
 
-With three blades, ordinary log-concavity can fail. The 17-vertex graph `K_1 join (K_4 disjoint-union K_5 disjoint-union K_7)` has `(d_1,d_2,d_3)=(1,16,260)`, so `d_2^2-d_1*d_3=-4`. This particular polynomial remains unimodal. Allowing equal blade sizes, `K_1 join (K_q disjoint-union K_q disjoint-union K_q)` fails log-concavity for every integer q>=5.
+The [complete computer-assisted proof](all-blades/all_blades_proof.md) is analytic for N≥23 and uses an exhaustive exact certificate for all **14,464** core/blade tuples of order N≤22. An independent AI mathematical audit returned PASS. This is not human peer review or Lean certification.
 
-- [Complete manuscript](paper/proof.pdf) and [standalone TeX](paper/proof.tex)
-- [Exact scope](SCOPE.md), [reference and source discrepancy](REFERENCES.md)
-- [Reproducibility and historical checks](REPRODUCIBILITY.md), [rights](RIGHTS.md)
+## Original question and previous work
 
-The source is Rather's open question following Theorem 2.16, not an affirmative conjecture that all these properties hold. The counting formula is proved directly from the graph definition and agrees with that theorem. The extra term printed in Corollary 2.17 is not used; no author-issued correction is asserted.
+Bilal Ahmad Rather asked about the zeros, log-concavity and unimodality of this family immediately after Theorem 2.16, p. 286, in *On domination polynomials of some graphs*, **JCMCC 126 (2025), 279–289**, published online **24 June 2025** ([DOI](https://doi.org/10.61091/jcmcc126-19)). This is an unnumbered question, not an affirmative conjecture that all properties hold.
 
-The written proofs are independent of finite experiments. This preparation ran no mathematical program or old suite and bundles no unnecessary code. Existing checks are identified as historical in REPRODUCIBILITY.md. The note does not solve general t>=3 unimodality or zero-location questions, and claims neither a smallest counterexample nor first discovery or worldwide priority.
+Burcroff–O’Brien (2021) already covered all three-blade cases and odd-order four-blade cases through upper-domination-number criteria. Zhang (2021) covered every graph with a universal vertex of order at least 8192. Omar (2026) supplied threshold-graph log-concavity and further sufficient criteria. The present result gives a **uniform whole-family answer to the unimodality part**, including the parameters not covered by those checked results. See [source dates and prior-art boundaries](all-blades/SOURCE_AND_SCOPE.md).
 
-Prepared with AI assistance; no independent human peer review or proof-assistant certification is asserted. Third-party papers are linked, not bundled. WHITELIST.txt gives the payload, and MANIFEST.json lists hashes excluding itself.
+## Results and scope
+
+- **All blades:** unimodality for all positive r,t,aᵢ. This is not the general domination-polynomial unimodality conjecture for arbitrary graphs.
+- **Two blades, earlier result:** ultra-log-concavity of order N, hence log-concavity and unimodality, for all r,a,b≥1.
+- **Three blades, earlier result:** ordinary log-concavity fails for the 17-vertex (r;a,b,c)=(1;4,5,7) example and for (1;q,q,q) with q≥5. These are not nonunimodality examples.
+- **Four blades:** [stronger normalized-tail concavity](all-blades/four_blade_strengthening/four_blade_proof.md), retained within the same result group, not counted as a separate solution.
+
+The zeros and limiting-zero questions remain open here. The erroneous extra term in printed Corollary 2.17 is not used. No smallest counterexample, first-discovery or worldwide-priority claim is made.
+
+## Proof and verification
+
+- [All-blade proof](all-blades/all_blades_proof.md), [exact certificate](all-blades/verification_all_blades.json), and [independent AI audit](all-blades/independent_all_blades_review.md)
+- [Reproduction instructions](REPRODUCIBILITY.md) and [exact scope](SCOPE.md)
+- Earlier two-/three-blade [manuscript PDF](paper/proof.pdf) and [TeX](paper/proof.tex), retained as the earlier version, not the all-blade proof
+- [References](REFERENCES.md), [rights](RIGHTS.md), [file list](WHITELIST.txt), and [integrity manifest](MANIFEST.json)
+
+## 中文摘要
+
+Rather于2025年在JCMCC提出的问题包含零点、对数凹性与单峰性。本次证明其中的**全家族单峰性**：任意正整数核心大小、叶片数及叶片大小均成立。N≥23用解析证明，N≤22用14,464组参数的精确穷尽证书。已通过独立AI复核，但不是人工同行评审，也未完成Lean形式化。
+
+原有两叶片超对数凹性、三叶片非对数凹反例保留；四叶片的更强结论属于同一成果组，不重复计数。已知特殊情形不作为新成果再次计算，零点问题亦不宣称解决。

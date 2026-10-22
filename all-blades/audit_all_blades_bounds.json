@@ -1,0 +1,7 @@
+{
+  "exhaustive_tuples_N_le_22": 14464,
+  "seed": 20261022,
+  "additional_random_tuples": 1000,
+  "index_cases": 159534,
+  "all_bounds_pass": true
+}

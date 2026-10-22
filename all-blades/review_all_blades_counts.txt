@@ -1,0 +1,1 @@
+{'graphs': 412, 'vertex_subsets': 431324, 'upper_half_layer_checks': 1377, 'result': 'all identities and bounds passed'}

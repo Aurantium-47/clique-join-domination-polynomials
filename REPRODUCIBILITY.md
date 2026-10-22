@@ -1,26 +1,28 @@
-# Proof and execution scope
+# Proof and reproducibility
 
-The parameter-wide results are fully written counting and algebraic proofs. No computational certificate is needed: partition dominating sets by whether they meet the central clique, take coefficients, prove the exact second-difference formula with zero conventions, handle u_0=0 separately, and apply the normalized inequalities. The three-blade failures follow from direct counts of sets of sizes 1,2,3 and the displayed polynomial inequality in q.
+## All-blade unimodality
 
-No mathematical program, enumeration, old author suite or new entry point was run in preparing this note. No program is bundled merely to repeat a closed check.
+The proof combines a uniform analytic argument for N≥23 with an exhaustive exact certificate for N≤22. From all-blades/, use Python 3.10 or newer with its standard library:
 
-## Historical finite checks
+```sh
+python3 verify_all_blades.py > reproduced.json
+cmp reproduced.json verification_all_blades.json
+python3 audit_all_blades_bounds.py
+python3 review_all_blades_counts.py
+```
 
-The retained execution documentation for 13 October 2026 identifies Python 3.8.3. Two relevant successful receipts record exit 0 and empty stderr:
+The first verifier certifies all 14,464 core/blade tuples through N=22 and 233 exact arithmetic cases, and checks 274 graph instances by enumerating 148,700 vertex subsets. The bound audit covers 159,534 index cases. The independent graph-level incidence check covers 412 graphs, 431,324 subsets and 1,377 layers. Results and independent reproduction records are included in all-blades/.
 
-| Check | Actual recorded finite range | Recorded external wall time | Recorded child peak working set |
-|---|---|---|---|
-| Two-blade ULC | r,a,b each in 1,...,12: 1728 ordered triples, 63936 second-difference equalities and 31968 ULC inequalities, using exact integers/Fraction | 0.6346819000000001 s | 15429632 bytes |
-| Direct graph enumeration | All vertex subsets of the 17-vertex 4/5/7 graph and 16-vertex 5/5/5 graph, plus full coefficients for four small two-blade graphs | 0.250864 s | 15372288 bytes |
+The [independent AI review](all-blades/independent_all_blades_review.md) fingerprints the exact reviewed proof in all-blades/audited_snapshot/. The clean top-level proof differs only in status wording; the report explains that distinction. Independent AI review is not human peer review or proof-assistant certification.
 
-The full recorded coefficient vectors have modes 9 and 8 for the two three-blade examples. The 17-vertex vector is transcribed in the manuscript and makes its unimodality explicit. The counterexample proof only needs its directly counted first three coefficients.
+The stronger four-blade theorem and exact checks are in all-blades/four_blade_strengthening/. They are supplementary to the same project, not an additional resolved-question count.
 
-The first attempt at the graph check exited 1 because the old interpreter did not provide `int.bit_count()`. Its failure was retained; the independently written check replaced that call with `bin(mask).count('1')` and subsequently passed. This was an environment-compatibility repair, not a mathematical counterexample, and it did not modify the author's original code. The previous failure is not hidden behind a claim of first-attempt success.
+## Earlier two-/three-blade results
 
-The independent 1728-triple check is not a rerun of the author's different 1680-triple table or the larger 12008-parameter graph scan. Those full tables are not claimed verified by this manuscript preparation. Historical results check their finite ranges; the written argument proves the all-positive-parameter theorem. Process memory observations did not measure all parent/tool/PDF processes and are not performance promises.
+The retained paper/proof.pdf and paper/proof.tex contain the earlier parameter-wide counting and algebraic proofs of two-blade ultra-log-concavity and three-blade log-concavity failures. These proofs do not rely on finite experiments. Historical exact checks covered r,a,b in 1,…,12 (1,728 ordered triples) and direct subset enumeration of the 17-vertex (4,5,7) and 16-vertex (5,5,5) examples. The historical evidence is not described as a new reproduction of unrelated suites.
 
-The underlying historical scripts, receipts and failures are preserved separately, but the unrelated multi-topic suite is not distributed here. No new portable mathematical entry is claimed to have run.
+To rebuild the earlier manuscript, run pdflatex proof.tex twice from paper/. No third-party PDF, external bibliography processor or figures are needed. A PDF rebuild may change metadata; MANIFEST.json identifies the published bytes.
 
-## Rebuilding the PDF
+## Integrity
 
-`paper/proof.tex` is standalone. With its standard LaTeX packages installed, run `pdflatex proof.tex` twice from `paper/` for references. No figures, external bibliography program, mathematical calculation or third-party PDF is required. A rebuild can change PDF timestamps/font encoding; MANIFEST.json identifies the supplied bytes. Compilation and visual checks do not constitute a new mathematical review.
+MANIFEST.json records SHA-256 hashes for the repository payload, excluding itself. all-blades/SHA256SUMS.txt records hashes inside that extension directory, excluding itself. Hash validation establishes byte integrity, not mathematical truth.

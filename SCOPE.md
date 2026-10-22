@@ -1,11 +1,19 @@
 # Exact mathematical scope
 
-All graphs are finite, simple and undirected. The central clique has positive order r; every blade is a nonempty clique, distinct blades have no edges between them, and every central vertex is adjacent to every blade vertex. Blade orders may coincide in this definition.
+All graphs are finite, simple and undirected. The central clique has positive order r; each of the t≥1 blades is a nonempty clique. Distinct blades have no edges between them; every central vertex is adjacent to every blade vertex. Blade orders may coincide.
 
-The positive theorem covers all integers r,a,b>=1 with exactly two blades. N-order ultra-log-concavity means the normalized sequence u_k=d_k/binom(N,k), k=0,...,N, is log-concave with no internal zeros. The formula u_k=1-A_k-B_k applies only at k>=1; the true u_0 is 0. The proof handles k=a-1,a and k>a, their b analogues, the last required indices and the k=1 inequality separately.
+## Current all-blade theorem
 
-The negative result for r=1 and blade orders 4,5,7 has 17 vertices and violates ordinary log-concavity at k=2. Its complete coefficients are unimodal, so it is not a nonunimodality counterexample. The separate equal-blade family q>=5 is claimed only to fail log-concavity; it is not presented as a family of nonunimodal polynomials. No smallest counterexample order is asserted.
+For every such graph, the domination polynomial is unimodal. The proof is analytic for every N≥23 and exhaustive with exact integer certificates for N≤22, covering all 14,464 core/blade tuples in that range. The [complete proof](all-blades/all_blades_proof.md), [certificate](all-blades/verification_all_blades.json), and [independent AI audit](all-blades/independent_all_blades_review.md) establish this scope. The stronger four-blade normalized-tail statement is supplementary within this same result group.
 
-The source asks about zeros, their limits, log-concavity and unimodality after Theorem 2.16. The note answers the two-blade positive case and supplies a negative answer to universal log-concavity. It does not resolve all those questions, general t>=3 unimodality or all graphs of bounded vertex connectivity. The direct counting proof avoids reliance on the extra term in printed Corollary 2.17, without purporting to revise the author's publication.
+## Earlier structural results
 
-No new computation, formal proof-assistant certification, independent human peer review or worldwide-priority conclusion is part of this version. Existing finite checks do not stand in for the all-parameter algebraic proof.
+For exactly two blades, all r,a,b≥1 satisfy N-order ultra-log-concavity: uₖ=dₖ/binom(N,k) is log-concave with no internal zeros. The actual u₀=0 is handled separately, as are all binomial truncations.
+
+For r=1 and blade orders 4,5,7, ordinary log-concavity fails at k=2. The polynomial is nevertheless unimodal. The equal-blade family (1;q,q,q), q≥5, also fails log-concavity, not unimodality. No smallest counterexample is asserted. The retained manuscript in paper/ proves these earlier results and is not the all-blade update.
+
+## Boundaries
+
+Rather's question after Theorem 2.16 also asks about zeros and their limits; those parts are not resolved here. Universal log-concavity is false. General domination-polynomial unimodality for arbitrary graphs is not established. The direct counting formula avoids the extra term in printed Corollary 2.17 without purporting to amend the author's publication.
+
+The current proof passed independent AI mathematical review, not independent human peer review. No Lean certification or worldwide-priority conclusion is claimed. Earlier known special cases and the supplementary four-blade result are not separate new solved-problem counts. See [source and prior-art boundaries](all-blades/SOURCE_AND_SCOPE.md).
